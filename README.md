@@ -339,5 +339,212 @@ Containers can contain different containers.
 
 - slicing can be used on Lists as well
 
+## Loops
+
+#### For-Loop
+
+* for-loops are used to iterate through an iterable (string, list, etc.)
+
+       name = "Ted"
+       for character in name:
+            print(character)
+>T
+>e
+>d
+  
+ * you can also have an index variable in a for-loop by using enumerate(x):
+ 
+    
+    tv = ["GOT", "Narcos", "Vice"]
+    for i, show in enumerate(tv):
+        new = tv[i]
+        new = new.upper()
+        tv[i] = new
+        
+    print(tv)
+    
+>> ['GOT', 'NARCOS', 'VICE']
+
+* or by using range(x,y):
+
+        
+    for i in range(1, 11):
+        print(i)
+        
+>> 1
+
+...
+
+>> 9 
+>> 10   
+
+#### While-Loop
+
+* while-loops are used to run a block of code as long as a condition is true
+
+    
+    x = 3
+    while x > 0:
+        print(x)
+        x -= 1
+    print("Happy New Year!")
+    
+>>3
+
+>>2
+
+>>1
+
+>> 'Happy New Year!'
+
+* **Note:** writing 'while True:' will make an infinite loop unless you use a break statement
+
+#####Break
+
+* a break statement is used to terminate a loop
+
+
+    while True:
+        a = input("Guess a number: ")
+        if a == '87':
+            break
+        else
+            print("That's not the right number!"
+
+#####Continue
+
+* a continue statement stops the current iteration & moves onto the next one
+
+
+    for i in range(1, 6):
+        if i == 3:
+            continue
+        print(i)
+        
+>> 1
+
+>> 2
+
+>> 4
+
+>> 5
+
+
+#### Nested Loops
+
+* you can combine loops by putting, or 'nesting', one loop inside another
+
+    
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 6]
+    added = []
+    for i in list1:
+        for j in list2:
+            added.append(i + j)
+            
+    print(added)
+    
+>> [5, 6, 7, 6, 7, 8, 7, 8, 9]
+
+
+### Modules
+
+* another name for a python file with code in it
+
+* you can import a module using keyword *import* to use variables and functions from it
+
+**Built-in Modules:**
+
+* math
+
+* random
+
+* statistics
+
+* keyword
+
+
+    import math
+    
+    math.pow(2, 3)
+    
+>> 8.0
+
+**Create your own module by:**
+
+* create a python file
+
+* save the file
+
+* import the file into another file located in the same folder
+
+### Files
+
+* python has built-in functions made to manipulate file objects
+
+* first step is to open a file using the *open()* function
+
+* the *write(x)* function lets you write x to a file
+
+* the *read()* function lets you read from a file
+
+* you must close a file with the *close()* function
+
+#### Open file
+
+* the *open* function takes a file and a file mode and returns a file object
+
+* Here are some modes that you can open a file in :
+    * "r" - opens a file for reading only
+    * "w" - opens a file for writing only; overwrites the file if it already exists; if it doesn't exist, creates a new file
+    * "w+" - opens a file for reading and writing; overwrites the file if it already exists; if it doesn't exist, creates a new file
     
 
+    st = open("st.text", "w")
+    st.write("Hi from Python!")
+    st.close()
+    
+#### Automatically close file
+
+* to automatically close a file without using the *close() function, open your file using a **with-statement**
+
+
+    with open("st.txt", "w") as f:
+        f.write("Hi from Python!")
+        
+* this will automatically close the file once the code inside the with-statement executes
+
+#### CSV files
+
+* python has built-in module for working with CSV files
+
+* you can use the *open()* function to open a file and then use the *write()* function from the csv module to turn the file object into a csv object
+
+* use the function *writerow()* to write to the csv object
+
+    
+    import csv 
+    
+    with open("st.csv", "w", newline='') as f:
+        w = csv.writer(f, delimiter=",")
+        w.writerow(["one", "two", "three"])
+        w.writerow(["four", "five", "six"])
+        
+>> one,two,three
+
+>>four,five,six
+
+* the csv module also has a function for reading a CSV file: *reader()*
+* the *reader()* function returns an iterable of the rows in the csv file
+
+   
+    import csv
+    
+    with open("st.csv", "r") as f:
+        r = csv.reader(f, delimiter=",")
+        for row in r:
+            print(",".join(row))
+                
+>> one,two,three
+
+>> four,five,six
