@@ -518,7 +518,7 @@ Containers can contain different containers.
 
 * python has built-in module for working with CSV files
 
-* you can use the *open()* function to open a file and then use the *write()* function from the csv module to turn the file object into a csv object
+* you can use the *open()* function to open a file and then use the *writer()* function from the csv module to turn the file object into a csv object
 
 * use the function *writerow()* to write to the csv object
 
